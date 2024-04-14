@@ -64,5 +64,3 @@ async def get_person_by_id_from_cne(nid_type: str, nid: str) -> Response:
         resp.headers[CONTENT_TYPE] = APPLICATION_JSON
         log.info(f"Ending: {currentframe().f_code.co_name}")
         return resp
-
-

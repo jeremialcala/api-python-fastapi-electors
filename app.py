@@ -47,9 +47,7 @@ async def interceptor(request: Request, call_next):
         log.info(request.url.path)
         log.info(request.query_params)
 
-        request.state.event_id = None
         [log.debug(f"Header! -> {hdr}: {val}") for hdr, val in request.headers.items()]
-
         response = await call_next(request)
 
         log.info(f"response_body= {response[0].decode()}")
@@ -58,8 +56,10 @@ async def interceptor(request: Request, call_next):
     finally:
         process_time = "{:f}".format(time.time() - s_time)
         response.headers[PROCESSING_TIME] = str(process_time)
+
         [log.debug(f"Header! -> {hdr}: {val}") for hdr, val in response.headers.items()]
         log.info(f"Ending: {currentframe().f_code.co_name} code:{response.status_code} time: {process_time}")
+
         return response
 
 
