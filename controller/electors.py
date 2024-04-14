@@ -59,7 +59,7 @@ async def get_person_by_id_from_cne(nid_type: str, nid: str) -> Response:
 
     finally:
         resp.status_code = body.code
-        resp.body = body.__dict__
+        resp.body = body.json()
         resp.headers[CONTENT_LENGTH] = str(len(body.to_json()))
         resp.headers[CONTENT_TYPE] = APPLICATION_JSON
         log.info(f"Ending: {currentframe().f_code.co_name}")
