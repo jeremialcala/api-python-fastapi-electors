@@ -1,0 +1,3 @@
+# -*- coding: utf-8 -*-
+
+PROCESS_OK = "PROCESS COMPLETED SUCCESSFULLY"
