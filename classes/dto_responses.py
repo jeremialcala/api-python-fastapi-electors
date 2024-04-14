@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import json
+
 from datetime import datetime
 from pydantic import BaseModel, Field
 from constants import PROCESS_OK
@@ -10,3 +12,9 @@ class ResponseData(BaseModel):
     message: str = Field(default=PROCESS_OK)
     data: dict | list | object | None = Field(default=People())
     timestamp: datetime = datetime.now()
+
+    def to_json(self):
+        return json.dumps(
+            {k: self.to_string(v) for k, v in self.__dict__.items() if v},
+            sort_keys=False, indent=4, separators=(',', ': ')
+        )
