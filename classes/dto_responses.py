@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import json
 
+from bson import ObjectId
 from datetime import datetime
 from pydantic import BaseModel, Field
+
 from constants import PROCESS_OK
 from .dto_people import People
 
@@ -18,3 +20,7 @@ class ResponseData(BaseModel):
             {k: self.to_string(v) for k, v in self.__dict__.items() if v},
             sort_keys=False, indent=4, separators=(',', ': ')
         )
+
+    @staticmethod
+    def to_string(value: any) -> str:
+        return str(value) if type(value) is ObjectId or type(value) is datetime else value
