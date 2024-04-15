@@ -64,7 +64,7 @@ async def interceptor(request: Request, call_next):
 
 
 @app.get(path="/electors", tags=["Electors"])
-async def get_elector_data(nid: str, nid_type: str = "V"):
+async def get_elector_data(nid: int, nid_type: str = "V"):
     """
 
     :param nid: This is the National Identification number

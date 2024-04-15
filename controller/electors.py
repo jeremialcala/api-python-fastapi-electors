@@ -14,7 +14,7 @@ settings = Settings()
 log = logging.getLogger(settings.environment)
 
 
-async def get_person_by_id_from_cne(nid_type: str, nid: str) -> Response:
+async def get_person_by_id_from_cne(nid_type: str, nid: int) -> Response:
     log.info(f"Starting: {currentframe().f_code.co_name}")
     resp = Response()
     body = ResponseData(
@@ -50,7 +50,7 @@ async def get_person_by_id_from_cne(nid_type: str, nid: str) -> Response:
             body = ResponseData(
                 code=status.HTTP_200_OK,
                 message=f"the national id {nid} is a valid one",
-                data=person.json(),
+                data=person.__dict__,
                 timestamp=datetime.now()
             )
 
@@ -59,7 +59,7 @@ async def get_person_by_id_from_cne(nid_type: str, nid: str) -> Response:
 
     finally:
         resp.status_code = body.code
-        resp.body = body.json()
+        resp.body = body.to_json()
         resp.headers[CONTENT_LENGTH] = str(len(body.to_json()))
         resp.headers[CONTENT_TYPE] = APPLICATION_JSON
         log.info(f"Ending: {currentframe().f_code.co_name}")

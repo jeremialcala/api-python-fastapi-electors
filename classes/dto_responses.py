@@ -12,7 +12,7 @@ from .dto_people import People
 class ResponseData(BaseModel):
     code: int = Field(default=200, examples=[201, 204, 400, 401, 403])
     message: str = Field(default=PROCESS_OK)
-    data: dict | list | object | None = Field(default=People())
+    data: dict | list | None = Field(default=None)
     timestamp: datetime = datetime.now()
 
     def to_json(self):
