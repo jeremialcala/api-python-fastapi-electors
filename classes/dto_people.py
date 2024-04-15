@@ -27,6 +27,6 @@ class People(BaseModel):
             state=_data[7],
             county=_data[9],
             parrish=_data[11],
-            center=_data[13],
+            pollCenter=_data[13],
             address=_data[15]
         )

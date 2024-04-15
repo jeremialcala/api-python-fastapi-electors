@@ -63,7 +63,7 @@ async def interceptor(request: Request, call_next):
         return response
 
 
-@app.get(path="/electors", tags=["Electors"])
+@app.get(path="/electors", tags=["Electors"], response_model=ResponseData)
 async def get_elector_data(nid: int, nid_type: str = "V"):
     """
 

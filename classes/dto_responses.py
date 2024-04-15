@@ -10,9 +10,18 @@ from .dto_people import People
 
 
 class ResponseData(BaseModel):
-    code: int = Field(default=200, examples=[201, 204, 400, 401, 403])
+    code: int = Field(default=200)
     message: str = Field(default=PROCESS_OK)
-    data: dict | list | None = Field(default=None)
+    data: dict | list | None = Field(default={
+        "nationalId": "V-16084690",
+        "name": "JEREMI JESUS ALCALA MENESES",
+        "state": "DTTO. CAPITAL",
+        "county": "MP. BLVNO LIBERTADOR",
+        "parrish": "PQ. COCHE",
+        "pollCenter": "UNIDAD EDUCATIVA BOLIVARIANA CORONEL CARLOS DELGADO CHALBAUD",
+        "address": "URBANIZACIÓN CARLOS DELGADO CHALBAUD FRENTE AVENIDA GUZMAN BLANCO. DERECHA CALLE CENTRAL. "
+                   "IZQUIERDA CALLE MIGUEL OTERO SILVA FRENTE A LA CANTV. EDIFICIO"
+    })
     timestamp: datetime = datetime.now()
 
     def to_json(self):
