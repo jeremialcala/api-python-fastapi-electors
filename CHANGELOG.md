@@ -2,6 +2,12 @@
 
 All the changes of this API will be documented on this change log.
 
+## [Unreleased] - 2024-04-15
+
+### Fixed
+ - ResponseData: adding default data response
+ - dto_people: changing center to pollCenter key name in "get_people_from_cne".
+
 ## [Unreleased] - 2024-04-14
 
 ### Added

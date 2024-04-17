@@ -49,8 +49,6 @@ async def interceptor(request: Request, call_next):
 
         [log.debug(f"Header! -> {hdr}: {val}") for hdr, val in request.headers.items()]
         response = await call_next(request)
-
-        log.info(f"response_body= {response[0].decode()}")
     except Exception as e:
         log.error(e.__str__())
     finally:
